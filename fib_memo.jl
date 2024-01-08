@@ -2,13 +2,10 @@
 # Sendo assim, permitindo que chamadas futuras com os mesmos parametros sejam resolvidas
 # mais rapidamente sem precisar calcular novamente.
 
-dict_memo = Dict() # Dicionario vazio para armazenar os valores já calculado.
+dict_memo = Dict(0=>0, 1=> 1) # Dicionario vazio para armazenar os valores já calculado.
 
 function fib_recursivo_memo(n)
-    if n == 0 || n == 1
-        return dict_memo[n] = n
-    end
-
+    
     if n in keys(dict_memo)
         return dict_memo[n]
     else
