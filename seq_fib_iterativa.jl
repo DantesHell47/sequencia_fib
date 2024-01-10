@@ -19,3 +19,13 @@ function fib_recursivo(n)
         return fib_recursivo(n-1) + fib_recursivo(n-2)
     end
 end
+
+
+
+function sequence_fib(n)
+    fib = [0, 1]
+    while length(fib) < n
+        push!(fib, fib[end] + fib[end - 1])
+    end
+    return fib
+end

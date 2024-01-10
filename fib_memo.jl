@@ -2,14 +2,15 @@
 # Sendo assim, permitindo que chamadas futuras com os mesmos parametros sejam resolvidas
 # mais rapidamente sem precisar calcular novamente.
 
-dict_memo = Dict(0=>0, 1=> 1) # Dicionario vazio para armazenar os valores já calculado.
-
-function fib_recursivo_memo(n)
-
+function fib_recursivo_memo(n, dict_memo = Dict{Int,Int}(0=>0, 1=>1))
+    if n < 0
+        error("n não deve ser um número negativo")
+    end
+    
     if haskey(dict_memo, n)
         return dict_memo[n]
     else
-        dict_memo[n] = fib_recursivo_memo(n-1) + fib_recursivo_memo(n-2)
+        dict_memo[n] = fib_recursivo_memo(n-1, dict_memo) + fib_recursivo_memo(n-2, dict_memo)
     end
     return dict_memo[n]
 end
