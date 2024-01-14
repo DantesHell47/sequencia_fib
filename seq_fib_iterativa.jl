@@ -1,5 +1,5 @@
 # Exercicio para contruir a sequencia de Fibonacci para o caso iterativo e para o caso recursivo
-using Plots
+using Plots; gr()
 function fib_iterativo(n)
     if n == 0
         return n
@@ -30,5 +30,14 @@ function sequence_fib(n)
     return fib
 end
 
-valores = sequence_fib(50)
-graf = plot(valores, legend=false,markershape=:circle)
+# Grafivos das sequencia de Fibonacci
+valores = sequence_fib(51)
+indice = collect(0:50)
+scatter(indice,valores, legend=false,markershape=:circle, xlabel="Índice", ylabel="Valores")
+
+y_offset=20
+anotation = annotate!()
+for i in 45:51
+    anotation = annotate!(i-1,valores[i] + y_offset, text("($(i-1), $(valores[i]))  ",9,:right))
+end
+anotation
