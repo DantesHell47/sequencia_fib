@@ -1,5 +1,5 @@
 # Exercicio para contruir a sequencia de Fibonacci para o caso iterativo e para o caso recursivo
-
+using Plots
 function fib_iterativo(n)
     if n == 0
         return n
@@ -29,3 +29,6 @@ function sequence_fib(n)
     end
     return fib
 end
+
+valores = sequence_fib(50)
+graf = plot(valores, legend=false,markershape=:circle)
