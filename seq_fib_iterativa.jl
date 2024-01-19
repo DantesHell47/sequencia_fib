@@ -31,13 +31,14 @@ function sequence_fib(n)
 end
 
 # Grafivos das sequencia de Fibonacci
-valores = sequence_fib(51)
-indice = collect(0:50)
-scatter(indice,valores, legend=false,markershape=:circle, xlabel="Índice", ylabel="Valores")
+function grafico(N, y_offset=20)
+    valores = sequence_fib(N+1)
+    indice = collect(0:N)
+    scatter(indice,valores, legend=false,markershape=:circle, xlabel="Índice", ylabel="Valores")
 
-y_offset=20
-anotation = annotate!()
-for i in 45:51
-    anotation = annotate!(i-1,valores[i] + y_offset, text("($(i-1), $(valores[i]))  ",9,:right))
-end
-anotation
+    anotation = annotate!()
+    for i in (N-5):N+1
+        anotation = annotate!(i-1,valores[i] + y_offset, text("($(i-1), $(valores[i]))  ",9,:right))
+    end
+    anotation
+    savefig("graf.svg")
